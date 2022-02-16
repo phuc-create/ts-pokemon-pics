@@ -1,5 +1,5 @@
 import React from 'react'
-import { Actions } from '../redux/reducer'
+import { Actions } from '../../reducer'
 import { TodoInput } from './Form'
 interface TodoProps {
   setTodo:React.Dispatch<React.SetStateAction<TodoInput>>;

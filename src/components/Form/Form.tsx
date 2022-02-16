@@ -1,7 +1,7 @@
 import React from "react"
 import Input from "./Input"
 import List from "./List"
-import todoReducer from '../redux/reducer'
+import {useCtx,Todo} from '../../reducer'
 export interface TodoInput {
     id:number;
     text:string;
@@ -15,16 +15,14 @@ const Form = () => {
         completed:false,
         timeStamp: new Date()
     })
-    const [state,dispatch] = React.useReducer(todoReducer,{
-        todos:[]
-    })
+    const {dispatch,state} = useCtx()
     const handleSubmitTodo = (e: { preventDefault: () => void }) => {
         e.preventDefault()
         if(todo.text === ""){
             alert('null ?')
             return
         }
-        if(state.todos.find(t => t.todo === todo.text)){
+        if(state.todos.find((t:Todo) => t.todo === todo.text)){
             alert('already exist !')
             return
         } 
@@ -47,6 +45,10 @@ const Form = () => {
         dispatch({type:"update",id:idTodo})
     }
 
+    const handleEditTodo = (ID:number,text:string) => {
+        dispatch({type:"edit",id:ID,todo:text})
+    }
+
     const clear = () => {
         dispatch({type:"clear"})
     }
@@ -62,7 +64,9 @@ const Form = () => {
             <List 
             todos={state.todos} 
             handleDeleteTodo={handleDeleteTodo} 
-            handleUpdateTodo={handleUpdateTodo}/>
+            handleUpdateTodo={handleUpdateTodo}
+            handleEditTodo={handleEditTodo}
+            />
         </div>
     )
 }
