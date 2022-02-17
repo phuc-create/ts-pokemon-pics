@@ -13,3 +13,134 @@ type Actions =  {type:'add',id:number,todo:string,timeStamp:Date}
                 | {type:'clear'}
                 | {type:'edit',id:number,todo:string}
 export type { Todo,State,Actions}
+
+
+export interface PokemonType {
+    abilities: [
+        {
+            ability: {
+                name: string,
+                url: string
+            },
+            is_hidden: boolean,
+            slot: 1
+        },
+        
+    ],
+    base_experience: number,
+    forms: [
+        {
+            name: string,
+            url: string        }
+    ],
+    game_indices: [
+        {
+            game_index: number,
+            version: {
+                name: string,
+                url: string     }
+        },
+        
+    ],
+    height:number,
+    held_items: [
+        {
+            item: {
+                name: string,
+                url: string    
+              },
+            version_details: [
+                {
+                    rarity: number,
+                    version: {
+                        name: string,
+                        url: string              }
+                }, 
+            ]
+        }
+    ],
+    id: number,
+    is_default: boolean,
+    location_area_encounters: string,
+    moves: [
+       
+        {
+            move: {
+                name: string,
+                url: string    },
+            version_group_details: [
+                {
+                    
+                    move_learn_method: {
+                      name: string,
+                      url: string 
+                    },
+                    version_group: {
+                      name: string,
+                      url: string 
+                    }
+                }
+            ]
+        },
+        
+    ],
+    name: string,
+    order: number,
+    past_types: [],
+    species: {
+      name: string,
+      url: string 
+    },
+    sprites: {
+        back_default: string,
+        back_female: null,
+        back_shiny: string,
+        back_shiny_female: null,
+        front_default: string,
+        front_female: null,
+        front_shiny: string,
+        front_shiny_female: null,
+        other: {
+            dream_world: {
+                front_default: string,
+                front_female: null
+            },
+            home: {
+                front_default: string,
+                front_female: null,
+                front_shiny: string,
+                front_shiny_female: null
+            },
+            'official-artwork': {
+                front_default: string
+            }
+        },
+        versions: {
+            'generation-i': object,
+            'generation-ii': object,
+            'generation-iii': object,
+            'generation-iv': object,
+            "generation-vi": object,
+            "generation-vii": object,
+            "generation-viii": object
+        }
+    },
+    stats: [
+        {
+            base_stat: number,
+            effort: number,
+            stat: {
+                name: string,
+                url: string   }
+        }
+    ],
+    types: [
+        {
+            slot: number,
+            type: {
+                name: string,
+                url: string    }
+        }
+    ],
+    weight: number
+}

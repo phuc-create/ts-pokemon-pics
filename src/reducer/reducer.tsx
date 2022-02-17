@@ -31,8 +31,7 @@ const TodoReducer = (state:State,action:Actions) => {
                 ...state,
                 todos: state.todos.map((todo) =>  
                 todo.id === action.id ?
-                 {...todo,completed : !todo.completed}
-                  : todo    
+                    Object.assign({},todo,{completed : !todo.completed}) : todo    
                 )
             }
         case TodoType.CLEAR:
@@ -44,7 +43,7 @@ const TodoReducer = (state:State,action:Actions) => {
             return {
                 ...state,
                 todos: state.todos.map(todo => 
-                    todo.id === action.id ? {...todo, todo : action.todo} : todo
+                    todo.id === action.id ? Object.assign({},todo,{todo:action.todo}) : todo
                 )
             }
         default:
